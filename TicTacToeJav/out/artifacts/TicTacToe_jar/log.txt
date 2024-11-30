@@ -1,7 +1,0 @@
-    |     |    
- -  |  -  | -  
-    |     |    
- -  |  -  | -  
-    |     |    
-
-Giocatore X inserisci la tua mossa (coordinate della cella esempio: 0 0):
