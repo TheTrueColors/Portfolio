@@ -1,0 +1,39 @@
+.root{
+  -fx-background-color: rgb(34, 34, 34);
+  -fx-background-radius:28;
+}
+
+.mainPane{
+  -fx-background-color: linear-gradient(to bottom right, #9ad8ff,#0036ba );
+  -fx-background-radius: 15 15 25 25;
+}
+
+.textField{
+  -fx-background-radius:15 15;
+  -fx-background-color: rgba(0, 0, 0, 0.14);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.2, 5, 5);
+}
+
+.button{
+  -fx-background-color: rgba(0, 0, 0, 0.14);
+  -fx-background-radius:25;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.2, 5, 5);
+}
+.button:hover{
+  -fx-background-color: rgba(0, 0, 0, 0.34);
+}
+
+.icon {
+  -fx-padding: 5;
+  -fx-border-color: transparent;
+  -fx-border-width: 2px;
+  -fx-border-radius: 5px;
+  -fx-background-color: transparent;
+}
+
+.icon:hover {
+  -fx-border-color: #FF6347; /* Colore del bordo */
+  -fx-border-radius: 100;
+  -fx-background-color: rgba(255, 99, 71, 0.2); /* Aggiunge un colore di sfondo leggero */
+  -fx-background-radius: 100;
+}

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="500.0" stylesheets="@mainwindows.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calculator.calculatorjava.CalculatorController">
+   <children>
+      <Pane layoutX="15.0" layoutY="45.0" prefHeight="589.0" prefWidth="470.0" styleClass="mainPane" stylesheets="@mainwindows.css">
+         <children>
+            <Pane fx:id="display" layoutX="14.0" layoutY="22.0" prefHeight="91.0" prefWidth="443.0" styleClass="textField" stylesheets="@mainwindows.css">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="13.0" prefHeight="66.0" prefWidth="429.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="124.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="7" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="127.0" layoutY="124.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="8" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="245.0" layoutY="124.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="37.0" layoutY="17.0" text="9" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="357.0" layoutY="124.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="35.0" layoutY="17.0" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="237.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="4" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="127.0" layoutY="237.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="5" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="245.0" layoutY="237.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="6" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="356.0" layoutY="237.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="41.0" layoutY="17.0" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="13.0" layoutY="354.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="1" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="126.0" layoutY="354.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="2" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="244.0" layoutY="354.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="3" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="356.0" layoutY="354.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="40.0" layoutY="20.0" text="*" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="479.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="36.0" layoutY="17.0" text="C" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="127.0" layoutY="479.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="38.0" layoutY="17.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="245.0" layoutY="479.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="35.0" layoutY="17.0" text="=" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="357.0" layoutY="479.0" onMouseClicked="#handlePaneClick" prefHeight="100.0" prefWidth="100.0" styleClass="button" stylesheets="@mainwindows.css">
+               <children>
+                  <Label layoutX="41.0" layoutY="17.0" text="/" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane onMousePressed="#handleMousePressed" onMouseDragged="#handleMouseDragged" layoutX="16.0" layoutY="-1.0" prefHeight="45.0" prefWidth="480.0" >
+         <children>
+            <Pane layoutX="438.0" layoutY="8.0" prefHeight="30.0" prefWidth="28.0" styleClass="icon" stylesheets="@mainwindows.css">
+               <children>
+                  <ImageView fx:id="close" fitHeight="28.0" fitWidth="35.0" onMouseClicked="#handleCloseButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@close.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="410.0" layoutY="9.0" prefHeight="28.0" prefWidth="28.0" styleClass="icon" stylesheets="@mainwindows.css">
+               <children>
+                  <ImageView fx:id="minimize" fitHeight="34.0" fitWidth="28.0" onMouseClicked="#handleMinimizeButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@minimize.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="14.0" layoutY="8.0" text="Calcolatrice" textFill="WHITE">
+               <font>
+                  <Font name="Gill Sans MT Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
