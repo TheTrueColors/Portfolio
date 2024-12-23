@@ -15,8 +15,6 @@ import java.sql.ResultSet;
 public class Controller {
 
     // --- FXML Fields ---
-    // Dichiarazione dei campi che saranno legati agli elementi nel file FXML
-
     @FXML
     private Stage stage;  // Riferimento alla finestra principale
     @FXML
@@ -36,7 +34,6 @@ public class Controller {
     @FXML
     private TextField ifi, cf, nome, ind, co, pro, cap, nazione, den, cognome;
 
-    // --- Variabili interne per il controllo della finestra ---
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -72,7 +69,6 @@ public class Controller {
      * Configura le colonne della TableView per visualizzare correttamente i dati degli articoli.
      */
     private void configureTableColumns() {
-        // Configura le colonne della tabella per visualizzare i dati correttamente
         codiceColumn.setCellValueFactory(cellData -> cellData.getValue().codiceProperty());
         prodottoColumn.setCellValueFactory(cellData -> cellData.getValue().prodottoProperty());
         quantitaColumn.setCellValueFactory(cellData -> cellData.getValue().quantitaProperty());
@@ -98,19 +94,15 @@ public class Controller {
      * Configura gli EventListener per gli elementi dell'interfaccia utente.
      */
     private void configureEventListeners() {
-        // Quando un prodotto viene selezionato, popola i campi con le informazioni corrispondenti
         prodottoChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) populateFieldsWithProductInfo(newValue);
         });
 
-        // Calcola il prezzo totale ogni volta che cambia la quantità
         quantita.textProperty().addListener((observable, oldValue, newValue) -> {
             calculateTotalPrice();
         });
 
-        // Quando si clicca su "Cancella", rimuove l'elemento selezionato dalla tabella
         cancella.setOnMouseClicked(event -> removeSelectedItem());
-        // Quando si clicca su "Aggiungi", aggiunge un prodotto al carrello
         aggiungi.setOnMouseClicked(event -> addItemToCart());
     }
 
@@ -122,9 +114,9 @@ public class Controller {
         try {
             int qty = Integer.parseInt(quantita.getText());
             double unitPrice = Double.parseDouble(prezzo_u.getText());
-            prezzo_t.setText(String.format("%.2f", qty * unitPrice)); // Formatta il prezzo totale
+            prezzo_t.setText(String.format("%.2f", qty * unitPrice));
         } catch (NumberFormatException e) {
-            prezzo_t.clear();  // Se ci sono errori nei campi, pulisce il campo del prezzo totale
+            prezzo_t.clear();
         }
     }
 
@@ -141,14 +133,11 @@ public class Controller {
                 preparedStatement -> preparedStatement.setString(1, productName),
                 resultSet -> {
                     if (resultSet.next()) {
-                        // Imposta i valori dei campi UI in base ai dati del prodotto selezionato
                         codice.setText(resultSet.getString("Codice"));
                         desc.setText(resultSet.getString("Descrizione"));
                         u_misura.setText(resultSet.getString("UnitaM"));
                         prezzo_u.setText(resultSet.getString("PrezzoU"));
                         s_magazzino.setText(resultSet.getString("ScorteM"));
-
-                        // Pulisce la quantità e il prezzo totale
                         quantita.clear();
                         prezzo_t.clear();
                     }
@@ -162,22 +151,15 @@ public class Controller {
      */
     private void addItemToCart() {
         if (validateFields()) {
-            // Crea un oggetto Item da aggiungere al carrello
             Item item = new Item(
                     codice.getText(),
                     prodottoChoiceBox.getValue(),
                     quantita.getText(),
                     prezzo_t.getText(),
-                    prezzo_u.getText() // Passa anche il prezzo unitario
+                    prezzo_u.getText()
             );
-
-            // Aggiungi l'elemento alla TableView
             tableView.getItems().add(item);
-
-            // Aggiorna le scorte nel database (diminuisce la quantità nel magazzino)
             adjustStock(item.getCodice(), -Integer.parseInt(item.getQuantita()));
-
-            // Ricalcola il prezzo totale
             calculateTotalPrice();
         } else {
             showError("Compila tutti i campi richiesti.");
@@ -198,8 +180,6 @@ public class Controller {
                     preparedStatement.setInt(1, quantityChange);
                     preparedStatement.setString(2, codiceProdotto);
                 });
-
-        // Ricarica le informazioni del prodotto per aggiornare il campo delle scorte
         reloadProductInfo(codiceProdotto);
     }
 
@@ -216,7 +196,7 @@ public class Controller {
                 resultSet -> {
                     if (resultSet.next()) {
                         int updatedStock = resultSet.getInt("ScorteM");
-                        s_magazzino.setText(String.valueOf(updatedStock));  // Aggiorna il campo UI delle scorte
+                        s_magazzino.setText(String.valueOf(updatedStock));
                     }
                 });
     }
@@ -229,13 +209,8 @@ public class Controller {
     private void removeSelectedItem() {
         Item selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            // Ripristina la quantità nel magazzino quando rimuovi un elemento dal carrello
             adjustStock(selectedItem.getCodice(), Integer.parseInt(selectedItem.getQuantita()));
-
-            // Rimuovi l'elemento selezionato dalla TableView
             tableView.getItems().remove(selectedItem);
-
-            // Ricalcola il totale
             calculateTotalPrice();
         } else {
             showError("Seleziona un elemento da rimuovere.");
@@ -262,15 +237,12 @@ public class Controller {
      * Resetta tutti i campi dell'interfaccia utente, inclusi quelli relativi al carrello e al cliente.
      */
     private void resetFields() {
-        // Pulisce tutti i campi del carrello
         codice.clear();
         prodottoChoiceBox.getSelectionModel().clearSelection();
         quantita.clear();
         prezzo_u.clear();
         s_magazzino.clear();
         prezzo_t.clear();
-
-        // Pulisce i campi relativi al cliente
         ifi.clear();
         cf.clear();
         nome.clear();
@@ -280,13 +252,9 @@ public class Controller {
         cap.clear();
         nazione.clear();
         cognome.clear();
-
-        // Pulisce i campi del prodotto
         den.clear();
         u_misura.clear();
         desc.clear();
-
-        // Pulisce la TableView
         tableView.getItems().clear();
     }
 
@@ -301,10 +269,8 @@ public class Controller {
     @FXML
     private void handleStampaFattura(ActionEvent event) {
         try {
-            // Genera il nome del file della fattura basato sul codice fiscale
             String filename = "fattura_" + cf.getText() + ".pdf";
 
-            // Calcola l'importo totale sommando i prezzi totali degli articoli nel carrello
             double totalAmount = tableView.getItems().stream()
                     .mapToDouble(item -> {
                         try {
@@ -315,14 +281,12 @@ public class Controller {
                     })
                     .sum();
 
-            // Prepara i dettagli dei prodotti per la fattura
             StringBuilder productDetails = new StringBuilder();
             for (Item item : tableView.getItems()) {
                 productDetails.append(String.format("Codice: %s, Prodotto: %s, Quantità: %s, Prezzo Unitario: €%s, Prezzo Totale: €%s\n",
                         item.getCodice(), item.getProdotto(), item.getQuantita(), item.getPrezzoUnitario(), item.getPrezzoTotale()));
             }
 
-            // Crea il PDF della fattura, aggiungendo il campo 'den'
             PdfGenerator.createInvoice(
                     filename,
                     productDetails,
@@ -335,13 +299,11 @@ public class Controller {
                     pro.getText(),
                     cap.getText(),
                     nazione.getText(),
-                    den.getText(),  // Aggiungi il campo 'den' qui
+                    den.getText(),
                     totalAmount
             );
 
             showAlert("Fattura Generata", "La fattura è stata generata con successo.");
-
-            // Resetta tutti i campi dopo aver generato la fattura
             resetFields();
         } catch (Exception e) {
             logError("Errore durante la generazione della fattura.", e);
@@ -349,12 +311,12 @@ public class Controller {
     }
 
     // --- Metodi di utilità per la gestione degli errori e delle operazioni nel database ---
+
     private void showError(String message) {
         showAlert("Errore", message);
     }
 
     private void showAlert(String title, String message) {
-        // Mostra un alert di tipo informativo
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -363,7 +325,6 @@ public class Controller {
     }
 
     private void executeUpdate(String query, QueryPreparer preparer) {
-        // Esegue una query di update nel database
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             if (preparer != null) preparer.prepare(preparedStatement);
@@ -374,7 +335,6 @@ public class Controller {
     }
 
     private void executeQuery(String query, QueryPreparer preparer, ResultSetHandler handler) {
-        // Esegue una query di selezione nel database
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             if (preparer != null) preparer.prepare(preparedStatement);
@@ -387,15 +347,15 @@ public class Controller {
     }
 
     private void logError(String message, Exception e) {
-        // Logga gli errori
         System.err.println(message);
         if (e != null) e.printStackTrace();
     }
 
+    // --- Metodi per il controllo della finestra (drag, close, minimize) ---
+
     @FXML
     private void handleDrag(MouseEvent event) {
         Stage stage = (Stage) this.stage.getScene().getWindow();
-        // Calcola la differenza tra la posizione attuale del mouse e la posizione della finestra
         if (event.getSource() != null) {
             xOffset = stage.getX() - event.getScreenX();
             yOffset = stage.getY() - event.getScreenY();
@@ -404,28 +364,24 @@ public class Controller {
 
     @FXML
     private void handleCloseButtonAction(MouseEvent event) {
-        // Chiude la finestra
         Stage stage = (Stage) close.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void handleMinimizeButtonAction(MouseEvent event) {
-        // Minimizza la finestra
         Stage stage = (Stage) minimize.getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
-    private void handleMousePressed(javafx.scene.input.MouseEvent event) {
-        // Salva la posizione iniziale per il drag della finestra
+    private void handleMousePressed(MouseEvent event) {
         xOffset = event.getSceneX();
         yOffset = event.getSceneY();
     }
 
     @FXML
-    private void handleMouseDragged(javafx.scene.input.MouseEvent event) {
-        // Muove la finestra in base al movimento del mouse
+    private void handleMouseDragged(MouseEvent event) {
         Stage stage = (Stage) display.getScene().getWindow();
         stage.setX(event.getScreenX() - xOffset);
         stage.setY(event.getScreenY() - yOffset);
