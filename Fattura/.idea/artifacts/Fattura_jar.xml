@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fattura:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fattura_jar</output-path>
+    <root id="archive" name="Fattura.jar">
+      <element id="module-output" name="Fattura" />
+    </root>
+  </artifact>
+</component>

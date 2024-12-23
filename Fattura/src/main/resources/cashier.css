@@ -1,0 +1,117 @@
+.root {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 0.5, 1, 2, 2);
+}
+
+.main-frame {
+    -fx-background-color: #FFFBFB;
+    -fx-background-radius: 15;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
+}
+
+.dati-frame,
+.item-frame,
+.carrello-frame {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 15;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
+}
+
+.ui-text {
+    -fx-font-weight: bold;
+    -fx-font-size: large;
+}
+
+.list-view {
+    -fx-background-color: #FFFDE9;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
+    -fx-background-radius: 5;
+}
+
+.text-field {
+    -fx-background-color: #FFFDE9;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
+}
+
+.text-field:focused {
+    -fx-border-color: #007BFF;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.5), 5, 0.5, 0, 0);
+}
+
+.menu-bar {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 15 15 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 0.5, 1, 2, 2);
+}
+
+.button-add {
+    -fx-background-color: #42d84c;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 0.5, 1, 2, 2);
+}
+
+.button-add:pressed {
+    -fx-background-color: #34a540; /* Colore quando premuto */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 0.5, 1, 2, 2);
+}
+
+.button-del {
+    -fx-background-color: #dc4343;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 0.5, 1, 2, 2);
+}
+
+.button-del:pressed {
+    -fx-background-color: #c12d2d; /* Colore quando premuto */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 0.5, 1, 2, 2);
+}
+
+/* Prevenzione di conflitti di stili */
+.text-field[editable="false"] {
+    -fx-background-color: #EAEAEA;
+    -fx-border-color: #888;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.text-field[editable="false"]:focused {
+    -fx-border-color: #888;
+    -fx-border-width: 1;
+}
+
+.choice-box {
+    -fx-background-color: #FFF;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+}
+
+.choice-box:focused {
+    -fx-border-color: #007BFF;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.5), 5, 0.5, 0, 0);
+}
+
+.icon {
+    -fx-padding: 5; /* Padding per separare l'icona dal bordo */
+    -fx-border-color: transparent; /* Bordo trasparente di default */
+    -fx-border-width: 2px; /* Bordo sottile */
+    -fx-border-radius: 50%; /* Bordo circolare */
+    -fx-background-color: transparent; /* Sfondo trasparente di default */
+}
+
+.icon:hover {
+    -fx-padding: 5;
+    -fx-border-color: #FF6347; /* Colore del bordo */
+    -fx-background-color: rgba(255, 99, 71, 0.2); /* Colore di sfondo quando hover */
+    -fx-background-radius: 50%;
+    -fx-border-width: 3px; /* Bordo leggermente più spesso durante hover */
+    -fx-border-radius: 50%; /* Mantieni il bordo circolare */
+}
